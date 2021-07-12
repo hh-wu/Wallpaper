@@ -130,9 +130,9 @@ void Wallpaper::on_activatedSysTrayIcon(QSystemTrayIcon::ActivationReason reason
 
 void Wallpaper::createActions()
 {
-    mShowWindow = new QAction(QObject::trUtf8("显示程序"),this);
+    mShowWindow = new QAction(QObject::trUtf8("Show"),this);
     connect(mShowWindow,SIGNAL(triggered()),SLOT(on_showMainAction()));
-    mExitAppAction = new QAction(QObject::trUtf8("退出程序"),this);
+    mExitAppAction = new QAction(QObject::trUtf8("Exit"),this);
     connect(mExitAppAction,SIGNAL(triggered()),this,SLOT(on_exitAppAction()));
 }
 
@@ -190,13 +190,13 @@ void Wallpaper::on_hoverButton_clicked()
     {
         // 设置全局钩子
         hook = SetWindowsHookEx(WH_MOUSE_LL,HookShoot,GetModuleHandle(NULL),0);
-        ui->hoverButton->setText("关闭");
+        ui->hoverButton->setText("Close");
         ui->hoverButton->setStyleSheet("background-color:rgb(255, 170, 0);color:white;border-radius:5px;border:none;font-size:14px;");
         isHover = true;
     }else{
         // 销毁全局钩子
         UnhookWindowsHookEx(hook);
-        ui->hoverButton->setText("开启");
+        ui->hoverButton->setText("Open");
         ui->hoverButton->setStyleSheet("background-color:rgb(60,60,60);color:white;border-radius:5px;border:none;font-size:14px;");
         isHover = false;
     }
